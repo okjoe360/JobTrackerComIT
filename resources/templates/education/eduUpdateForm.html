@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_layout_unsecured::html_head"></head>
+<body class="bg-info">
+<div class="container mt-5 w-75" id="register_jumbotron">
+    <div class="jumbotron bg-light border border-info mt-3 p-3 rounded-0" style="min-height: 450px;">
+        <h6>Jobs Tracking Application</h6>
+        <h3 class="mb-3">Update Education Details</h3>
+        <form class="mt-2" th:action="@{/education/update/} + ${edu.idEducation}" th:object="${edu}" method="post">
+            <div class="mb-3">
+                <label for="school" class="form-label">Name of Institution</label>
+                <input type="text" class="form-control rounded-0" th:field="*{school}" required>
+                <span class="error-message" th:errors="*{school}" />
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="mb-3">
+                        <label for="degree" class="form-label">Degree Obtained</label>
+                        <input type="text" class="form-control rounded-0" th:field="*{degree}" required>
+                        <span class="error-message" th:errors="*{degree}" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-3">
+                    <div class="mb-3">
+                        <label for="startDate" class="form-label">Start Date</label>
+                        <input type="date" class="form-control rounded-0" th:field="*{startDate}" required>
+                        <span class="error-message" th:errors="*{startDate}" />
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-3">
+                    <div class="mb-3">
+                        <label for="endDate" class="form-label">End Date</label>
+                        <input type="date" class="form-control rounded-0" th:field="*{endDate}" required>
+                        <span class="error-message" th:errors="*{endDate}" />
+                    </div>
+                </div>
+            </div>
+
+            <input type="number" value=1 class="form-control" id="user_id" name="user_id" required>
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-warning btn-sm mt-2 rounded-0 shadow" style="min-width: 100px;" id="submitBtn"><i class="bi bi-pencil-fill"></i>&nbsp;&nbsp;&nbsp;Update</button>
+                <a th:href="@{/education}" class="btn btn-outline-dark btn-sm mt-2 rounded-0 shadow" style="min-width: 100px;"><i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;&nbsp;Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div th:replace="~{_layout_unsecured :: scripts}"></div>
+<script>
+    $(document).ready(function(){
+        $(window).bind("resize",function(){
+              if( $(this).width() < 500 ){
+                $('#register_jumbotron').removeClass('w-75').addClass('w-100')
+              }
+              else{
+                $('#register_jumbotron').removeClass('w-100').addClass('w-75')
+              }
+             }).resize();
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="_layout::html_head"></head>
+<body class="">
+<div th:replace = "_layout::header"></div>
+
+<div th:replace = "_layout::off-canvas"></div>
+
+<main>
+    <div class="container mt-3 mb-5 w-75" id="jumbotron">
+        <div class="jumbotron bg-light border border-info mt-3 p-3 rounded-0" style="min-height: 450px;">
+            <h6>Jobs Tracking Management System</h6>
+            <div class="py-2">
+                <h3 class="">Add New Job</h3>
+            </div>
+
+            <form class="mt-2" th:action="@{/job/save}" th:object="${job}" method="post">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-8">
+                        <div class="mb-3">
+                            <label for="jobTitle" class="form-label">Job Title</label>
+                            <input type="text" class="form-control rounded-0" th:field="*{jobTitle}" required>
+                            <span class="error-message" th:errors="*{jobTitle}"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="mb-3">
+                            <label for="jobDate" class="form-label">Date</label>
+                            <input type="date" class="form-control rounded-0" th:field="*{jobDate}" required>
+                            <span class="error-message" th:errors="*{jobDate}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-3">
+                        <label for="jobDesc" class="form-label">Job Description</label>
+                        <textarea class="form-control rounded-0" th:field="*{jobDesc}" rows="3"></textarea>
+                        <span class="error-message" th:errors="*{jobDesc}"></span>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="jobWebsite" class="form-label">Job Link</label>
+                    <input type="text" class="form-control rounded-0" th:field="*{jobWebsite}" required>
+                    <span class="error-message" th:errors="*{jobWebsite}"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-7">
+                        <div class="mb-3">
+                            <label for="companyName" class="form-label">Company Name</label>
+                            <input type="text" class="form-control rounded-0" th:field="*{companyName}" required>
+                            <span class="error-message" th:errors="*{companyName}"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-5">
+                        <div class="mb-3">
+                            <label for="companyHr" class="form-label">HR Manager</label>
+                            <input type="text" class="form-control rounded-0" th:field="*{companyHr}">
+                            <span class="error-message" th:errors="*{companyHr}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="mb-3">
+                            <label for="companyWebsite" class="form-label">Company Website</label>
+                            <input type="text" class="form-control rounded-0" th:field="*{companyWebsite}">
+                            <span class="error-message" th:errors="*{companyWebsite}"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="mb-4">
+                            <label for="companyEmail" class="form-label">Company Email</label>
+                            <input type="text" class="form-control rounded-0" th:field="*{companyEmail}">
+                            <span class="error-message" th:errors="*{companyEmail}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--input type="text" th:value="${#authentication.getPrincipal().getUsername()}" th:name="user_id" class="form control"-->
+                <input type="hidden" value=1 id="user_id" name="user_id" class="form control" readonly><br>
+
+                <button type="submit" class="btn btn-success btn-sm mt-2 rounded-0 shadow" style="min-width: 100px;" id="submitBtn"><i class="bi bi-floppy-fill"></i>&nbsp;&nbsp;&nbsp;Create Job</button>
+                <button type="reset" class="btn btn-primary btn-sm mt-2 rounded-0 shadow" style="min-width: 100px;"><i class="bi bi-x-diamond-fill"></i>&nbsp;&nbsp;&nbsp;Reset</button>
+                <a th:href="@{/dashboard}" class="btn btn-outline-dark btn-sm mt-2 rounded-0 shadow" style="min-width: 100px;"><i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;&nbsp;Cancel</a>
+            </form>
+        </div>
+    </div>
+</main>
+
+<div th:replace="_layout::footer"></div>
+
+<div th:replace="_layout::scripts"></div>
+<script>
+    $(document).ready(function(){
+        $(window).bind("resize",function(){
+              if( $(this).width() < 500 ){
+                $('#jumbotron').removeClass('w-75').addClass('w-100')
+              }
+              else{
+                $('#jumbotron').removeClass('w-100').addClass('w-75')
+              }
+             }).resize();
+    })
+</script>
+</body>
+</html>
