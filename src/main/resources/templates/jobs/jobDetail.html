@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="_layout::html_head"></head>
+<body>
+<div th:replace = "_layout::header"></div>
+
+<div th:replace = "_layout::off-canvas"></div>
+
+<main>
+    <div class="container">
+        <div>
+            <div class="d-flex justify-content-between my-3 me-4">
+                <h3>Job Detail</h3>
+                <div>
+                    <a class="btn btn-primary btn-sm rounded-0 shadow" th:href="@{/dashboard}" style="min-width: 100px;"><i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;&nbsp;Back</a>
+                    <a class="btn btn-warning btn-sm rounded-0 mx-1 shadow" th:href="@{/job/update/} + ${job.idJob}" style="min-width: 100px;"><i class="bi bi-pencil-fill"></i>&nbsp;&nbsp;&nbsp;Update Job</a>
+                    <a class="btn btn-outline-danger btn-sm rounded-0 shadow" th:href="@{/job/delete/} + ${job.idJob}" style="min-width: 100px;"><i class="bi bi-trash-fill"></i>&nbsp;&nbsp;&nbsp;Delete Job</a>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="row">
+                <div class="col-sm-12 col-lg-7">
+                    <p class="mb-1"><strong>Job Title : </strong><span th:text="${job.jobTitle}" class=""></span></p>
+                    <p class="mb-1"><strong>Job Date : </strong><span th:text="${job.jobDate}" class=""></span></p>
+                    <p class="mb-1"><strong>Job Description : </strong><span th:text="${job.jobDesc}" class=""></span></p>
+                    <p class="mb-1"><strong>Company Name : </strong><span th:text="${job.companyName}" class=""></span></p>
+                    <p class="mb-1"><strong>HR Manager : </strong><span th:text="${job.companyHr}" class=""></span></p>
+                    <p class="mb-1"><strong>Company Email : </strong><span th:text="${job.companyEmail}" class=""></span></p>
+                    <div class="mt-3">
+                        <a th:href="${job.jobWebsite}" class="btn btn-sm btn-secondary rounded-0 shadow" style="min-width: 100px;">Job Link</a>
+                        <a th:href="${job.companyWebsite}" class="btn btn-sm btn-outline-dark rounded-0 shadow" style="min-width: 100px;">Company Website</a>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-5">
+                    <div id="job__link__preview" class="p-2">
+                        <img th:src="@{/img/comIT.png}" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<div th:replace="_layout::footer"></div>
+
+<div th:replace="_layout::scripts"></div>
+
+<script>
+    $(document).ready(function(){
+        //$('#job__link__preview').load('/blending/blending_form/{{data.id|safe}}/ #printable');
+    })
+</script>
+</body>
+</html>

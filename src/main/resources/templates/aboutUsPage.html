@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="_layout::html_head"></head>
+<body>
+<div>
+    <div th:replace = "_layout::header"></div>
+
+    <div th:replace = "_layout::off-canvas"></div>
+
+    <div class="container py-2">
+        <h3 class="text-primary mb-2">About us</h3>
+        <p>
+            Welcome to Job Tracker, where efficiency meets simplicity in the world of job tracking! We understand the challenges of keeping tabs on your professional tasks, deadlines, and progress. That's why we've created an intuitive and powerful solution designed to streamline your workflow.
+        </p>
+        <p>
+            At Job Tracker, we believe that staying organized should be as easy as possible. Our user-friendly interface empowers you to effortlessly manage your projects, milestones, and assignments, ensuring that you always stay on top of your game. Whether you're a freelancer juggling multiple gigs or part of a dynamic team collaborating on diverse projects, our app is your go-to companion for seamless job tracking.
+        </p>
+        <p>
+            What sets us apart? Jo's Job Tracker not only provides a centralized hub for all your job-related activities but also offers insightful analytics to enhance your decision-making process. Visualize your progress, identify bottlenecks, and celebrate achievements – all in one place.
+        </p>
+        <p>
+            Your success is our priority, and we're committed to continually enhancing Jo's Job Tracker to meet the evolving needs of modern professionals. Join us on a journey of productivity, organization, and success. Welcome to a smarter way of tracking and managing your work with Jo's Job Tracker!
+        </p>
+    </div>
+</div>
+<div th:replace="_layout::footer"></div>
+
+<div th:replace="_layout::scripts"></div>
+</body>
+</html>
